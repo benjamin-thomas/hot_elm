@@ -8,7 +8,8 @@
     "esbuild": "^0.14.53"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build2": "node esbuild.config.js"
   },
   "devDependencies": {
     "esbuild-plugin-elm": "^0.0.11-1"
