@@ -1,0 +1,18 @@
+version: '3.7' # https://docs.docker.com/compose/compose-file/compose-versioning/
+
+services:
+
+  # Initialize the DB container:
+  #   docker-compose up pg
+  #   ./bin/rake db:create db:migrate db:seed
+  #
+  # Destroy all services and their related storage:
+  #   docker-compose down --volumes
+  pg:
+    image: postgres:14
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
+    ports:
+      - '127.19.0.1:5432:5432' # 127.19.0.1     u
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dev
