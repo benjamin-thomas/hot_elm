@@ -6,7 +6,8 @@ import Html.Attributes exposing (href)
 
 type Route
     = Root
-    | Hello
+    | HelloElm
+    | HelloReact
 
 
 toHref : Route -> Attribute msg
@@ -15,15 +16,8 @@ toHref route =
         Root ->
             href "/"
 
-        Hello ->
-            href "/hello"
+        HelloElm ->
+            href "/hello_elm"
 
-
-
--- toString : Route -> String
--- toString route =
---     case route of
---         Root ->
---             "/"
---         Hello ->
---             "/hello"
+        HelloReact ->
+            href "/hello_react"

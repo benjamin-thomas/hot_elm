@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import ElmInitializerController from "./elm_initializer_controller"
-application.register("elm-initializer", ElmInitializerController)
+import ElmInitController from "./elm_init_controller"
+application.register("elm-init", ElmInitController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

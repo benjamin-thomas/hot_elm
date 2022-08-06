@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 
-  def index
+  def hello_react
   end
 
-  def hello
+  def hello_elm
   end
 
 end

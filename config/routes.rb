@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "static_pages#index"
-  get "hello", to: "static_pages#hello"
+  root "static_pages#hello_elm"
+  get "hello_elm", to: "static_pages#hello_elm"
+  get "hello_react", to: "static_pages#hello_react"
 end

@@ -106,7 +106,7 @@ view model =
             , br [] []
             , div []
                 [ text "Go to: "
-                , a [ Routes.Hello |> toHref ] [ text "Hello from Elm!" ]
+                , a [ Routes.HelloReact |> toHref ] [ text "Hello React from Elm!" ]
                 , text " Or press this button: "
                 , button [ actionBtnClass, onClick Reset ] [ text "Reset model!" ]
                 ]
