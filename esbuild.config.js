@@ -1,14 +1,11 @@
-// esbuild.config.js
-const path = require('path')
 const ElmPlugin = require('esbuild-plugin-elm')
 const esbuild = require('esbuild')
 
-// the absWorkingDirectory set below allows us to use paths relative to that location
 esbuild.build({
-  entryPoints: ['./application.js'],
+  entryPoints: ['./app/javascript/application.js'],
   bundle: true,
-  outdir: path.join(process.cwd(), "app/assets/builds"),
-  absWorkingDir: path.join(process.cwd(), "app/javascript"),
+  outdir: "app/assets/builds",
+  publicPath: "assets",
   watch: process.argv.includes("--watch"),
   sourcemap: true,
   plugins: [
