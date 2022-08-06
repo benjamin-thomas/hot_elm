@@ -3,7 +3,7 @@ import {useState} from "react";
 
 export default function Clicker() {
     const [count, setCount] = useState(0);
-    const [incBy, setIncBy] = useState(2);
+    const [incBy, setIncBy] = useState(1);
 
     const defaultBtnClass = "btn btn--dark";
     const actionBtnClass = "btn btn--secondary";
@@ -14,6 +14,11 @@ export default function Clicker() {
 
     function dec() {
         setCount(count - incBy);
+    }
+
+    function resetState() {
+        setCount(0);
+        setIncBy(1);
     }
 
     return (
@@ -35,7 +40,7 @@ export default function Clicker() {
 
             <p>
                 Go to: <a href="/hello_elm">Hello Elm from React!</a>
-                Or press this button: <button className={actionBtnClass}>Reset state!</button>
+                Or press this button: <button onClick={resetState} className={actionBtnClass}>Reset state!</button>
             </p>
 
         </>
