@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
 
+  def index
+  end
+
   def hello_react
   end
 

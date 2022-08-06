@@ -1,3 +1,23 @@
-<p>Hello React!</p>
+<main class="container">
+  <div class="header">
+    <h1>React + Hotwire + Stimulus demo</h1>
+  </div>
 
-<p>TODO</p>
+  <h2 style="margin-bottom: 10px">Ruby land here, before react "component" init</h2>
+
+  <hr>
+  <div data-controller="react-init"></div>
+  <hr>
+
+  <h2 style="margin-top: 40px;margin-bottom: 20px">Ruby land here: after react "component" init</h2>
+
+  <p>
+    Go to: <%= link_to "Hello Elm from Rails!", hello_elm_path %>
+    Turbo Drive tech intercepts the request and replaces the HTML body.
+  </p>
+
+  <p style="margin-top: 5px">
+    The javascript behavior/components are then re-instantiated with Stimulus.
+  </p>
+
+</main>

@@ -1,5 +1,6 @@
 const ElmPlugin = require('esbuild-plugin-elm')
 const esbuild = require('esbuild')
+const {jsx} = require("react/jsx-runtime");
 
 const isWatching = process.argv.includes("--watch");
 esbuild.build({
@@ -9,6 +10,7 @@ esbuild.build({
   publicPath: "assets",
   watch: isWatching,
   sourcemap: true,
+  loader: { '.js': 'jsx' },
   plugins: [
     ElmPlugin({ debug: isWatching })
   ],

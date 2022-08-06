@@ -7,5 +7,5 @@ import { application } from "./application"
 import ElmInitController from "./elm_init_controller"
 application.register("elm-init", ElmInitController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ReactInitController from "./react_init_controller"
+application.register("react-init", ReactInitController)
