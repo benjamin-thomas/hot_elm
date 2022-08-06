@@ -1,24 +1,34 @@
-# README
+# Elm + Hotwire + Stimulus demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a rails app.
 
-Things you may want to cover:
+## Run locally
 
-* Ruby version
+Requirements: 
 
-* System dependencies
+- docker-compose
+- local ruby install (see: `.ruby-version` file)
+  - see [rbenv](https://github.com/rbenv/rbenv) for easy ruby version management
 
-* Configuration
+### Step 1: add a local hostname entry to /etc/hosts
 
-* Database creation
+```bash
+root@me:~# cat /etc/hosts | grep hot-elm
+127.19.0.1      pg.hot-elm.test
+```
 
-* Database initialization
+### Step 2: adjust the `docker-compose.yml` ports config
 
-* How to run the test suite
+As per the /etc/hosts entry
 
-* Services (job queues, cache servers, search engines, etc.)
+### Step 3: launch the dev database
 
-* Deployment instructions
+```bash
+docker-compose up pg
+```
 
-* ...
+### Step 4: launch the rails app
+
+```bash
+./bin/dev
+```
