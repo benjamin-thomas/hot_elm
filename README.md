@@ -7,6 +7,8 @@ This is a rails app.
 Requirements: 
 
 - docker-compose
+- yarn
+- browser-sync (optional, see `Procfile.dev`)
 - local ruby install (see: `.ruby-version` file)
   - see [rbenv](https://github.com/rbenv/rbenv) for easy ruby version management
 
@@ -32,3 +34,11 @@ docker-compose up pg
 ```bash
 ./bin/dev
 ```
+
+### Step 5: Open your browser
+
+See `Procfile.dev` to change the listening ports, etc.
+
+One port is dedicated to a live reload environment.
+
+The other is the standard rails port, which may be better suited when receiving and sending data via websockets (turbo frames)
