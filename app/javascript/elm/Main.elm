@@ -1,8 +1,8 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (a, br, button, div, input, label, p, span, text)
-import Html.Attributes exposing (class, id, style, type_, value)
+import Html exposing (a, br, button, div, input, label, span, text)
+import Html.Attributes exposing (class, style, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Routes exposing (toHref)
 
@@ -44,7 +44,8 @@ type Msg
     | ChangedIncBy String
 
 
-positive n =
+alwaysPositive : number -> number
+alwaysPositive n =
     if n <= 0 then
         1
 
@@ -69,7 +70,7 @@ update msg model =
                 incBy =
                     Maybe.withDefault 1 (String.toInt str)
             in
-            { model | incBy = positive incBy }
+            { model | incBy = alwaysPositive incBy }
 
 
 defaultBtnClass : Html.Attribute msg
