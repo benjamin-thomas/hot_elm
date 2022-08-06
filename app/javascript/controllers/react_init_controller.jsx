@@ -7,14 +7,23 @@ import Clicker from "../components/Clicker";
 
 // Connects to data-controller="hello-react"
 export default class extends Controller {
-    connect() {
-        console.log("React (connect)", Date.now());
+    initialize() {
+        console.log(new Date(), "React (init)");
         this.root = ReactDOM.createRoot(this.element);
         this.root.render(<Clicker/>);
     }
 
+    connect() {
+        console.log(new Date(), "React (connect)");
+        this.root.render(<Clicker/>);
+    }
+
     disconnect() {
-        console.log("React (disconnect/unmount)", Date.now());
+        this.root.unmount();
+    }
+
+    unmount() {
+        console.log(new Date(), "React (teardown/unmount)");
         this.root.unmount();
     }
 }
