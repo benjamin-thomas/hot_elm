@@ -1,7 +1,23 @@
-<div data-controller="elm-initializer" data-elm-initializer-line-items-value="<%= @line_items.as_json %>">
-  <-- elm takes over -->
-</div>
+<main class="container">
+  <div class="header">
+    <h1>Elm + Hotwire + Stimulus demo</h1>
+  </div>
 
-<p>Front page</p>
+  <h2 style="margin-bottom: 10px">Ruby land here, before elm "component" init</h2>
 
-<p>Go to <%= link_to "Hello", hello_path %></p>
+  <hr>
+  <div data-controller="elm-initializer"></div>
+  <hr>
+
+  <h2 style="margin-top: 40px;margin-bottom: 20px">Ruby land here: after elm "component" init</h2>
+
+  <p>
+    Go to: <%= link_to "Hello from Rails!", hello_path %>
+    Turbo Drive tech intercepts the request and replaces the HTML body.
+  </p>
+
+  <p style="margin-top: 5px">
+    The javascript behavior/components are then re-instantiated with Stimulus.
+  </p>
+
+</main>

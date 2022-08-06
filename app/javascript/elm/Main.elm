@@ -1,8 +1,8 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (a, br, button, div, input, label, span, text)
-import Html.Attributes exposing (id, type_, value)
+import Html exposing (a, br, button, div, input, label, p, span, text)
+import Html.Attributes exposing (class, id, style, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Routes exposing (toHref)
 
@@ -29,7 +29,7 @@ type alias Model =
 init : Model
 init =
     { count = 0
-    , incBy = 2
+    , incBy = 1
     }
 
 
@@ -42,6 +42,14 @@ type Msg
     | Dec
     | Reset
     | ChangedIncBy String
+
+
+positive n =
+    if n <= 0 then
+        1
+
+    else
+        n
 
 
 update : Msg -> Model -> Model
@@ -61,30 +69,45 @@ update msg model =
                 incBy =
                     Maybe.withDefault 1 (String.toInt str)
             in
-            { model | incBy = incBy }
+            { model | incBy = positive incBy }
+
+
+defaultBtnClass : Html.Attribute msg
+defaultBtnClass =
+    class "btn btn--dark"
+
+
+actionBtnClass : Html.Attribute msg
+actionBtnClass =
+    class "btn btn--secondary"
 
 
 view : Model -> Html.Html Msg
 view model =
     div []
-        [ button [ onClick Dec ] [ text "-" ]
-        , span [] []
-        , button [ onClick Inc ] [ text "+" ]
-        , div []
-            [ text ("Current (esbuild) count: " ++ String.fromInt model.count)
+        [ button [ defaultBtnClass, onClick Dec ] [ text "-" ]
+        , span [ style "margin-left" "5px" ] []
+        , button [ defaultBtnClass, onClick Inc ] [ text "+" ]
+        , label [ style "margin-left" "50px" ] [ text "Increment counter values by" ]
+        , input
+            [ style "margin-left" "10px"
+            , style "width" "60px"
+            , type_ "number"
+            , onInput ChangedIncBy
+            , value (String.fromInt model.incBy)
+            ]
+            []
+        , div [ class "bundle" ]
+            [ text ("Current count: " ++ String.fromInt model.count)
             , br [] []
-            , text ("incBy=" ++ String.fromInt model.incBy)
-            , br [] []
-            , br [] []
-            , label [] [ text "Increment counter by" ]
-            , input [ type_ "number", onInput ChangedIncBy, value (String.fromInt model.incBy) ] []
+            , text ("increment values by: " ++ String.fromInt model.incBy)
             , br [] []
             , br [] []
             , div []
                 [ text "Go to: "
                 , a [ Routes.Hello |> toHref ] [ text "Hello from Elm!" ]
-                , text " Or reset: "
-                , button [ id "counter-reset", onClick Reset ] [ text "here" ]
+                , text " Or press this button: "
+                , button [ actionBtnClass, onClick Reset ] [ text "Reset model!" ]
                 ]
             ]
         ]

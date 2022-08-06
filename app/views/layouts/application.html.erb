@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <%= render "layouts/navbar" %>
+
+    <noscript style="position: relative;top:-25px;text-align: center;">Please enable JavaScript for a better experience.</noscript>
+
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
