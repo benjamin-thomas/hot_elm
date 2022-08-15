@@ -6,9 +6,13 @@
   <h2 style="margin-bottom: 10px">Ruby land here, before react "component" init</h2>
 
   <hr>
-<!--       data-action="turbo:before-cache@window->react-init#unmount"-->
-  <div data-turbo-cache="false"
-       data-controller="react-init"></div>
+
+  <div
+    data-turbo-cache="true"
+    data-controller="react-init"
+    data-react-init-count-value="123"
+  ></div>
+
   <hr>
 
   <h2 style="margin-top: 40px;margin-bottom: 20px">Ruby land here: after react "component" init</h2>

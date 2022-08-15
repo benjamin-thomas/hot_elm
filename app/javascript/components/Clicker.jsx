@@ -1,48 +1,36 @@
+// app/javascript/components/Clicker.jsx
+
 import * as React from "react";
 import {useState} from "react";
 
-export default function Clicker() {
-    const [count, setCount] = useState(0);
-    const [incBy, setIncBy] = useState(1);
-
-    const defaultBtnClass = "btn btn--dark";
-    const actionBtnClass = "btn btn--secondary";
+export default function Clicker(props) {
+    const [count, setCount] = useState(props.count);
 
     function inc() {
-        setCount(count + incBy);
+        const newCount = count + 1;
+        setCount(newCount);
+        props.onCountChanged(newCount);
     }
 
     function dec() {
-        setCount(count - incBy);
+        const newCount = count - 1;
+        setCount(newCount);
+        props.onCountChanged(newCount);
     }
 
     function resetState() {
-        setCount(0);
-        setIncBy(1);
+        setCount(props.count);
+        props.onCountChanged(props.count);
     }
 
     return (
         <>
-            <button className={defaultBtnClass} onClick={dec}>-</button>
-            <span style={{marginLeft: "5px"}}></span>
-            <button className={defaultBtnClass} onClick={inc}>+</button>
-
-            <label style={{marginLeft: "50px"}}>Increment counter values by</label>
-            <input style={{width: "60px", marginLeft: "10px"}} type="number" value={incBy}
-                   onChange={e => setIncBy(Number(e.target.value))}/>
-
+            <button onClick={dec}>-</button>
+            <button onClick={inc}>+</button>
             <br/>
-            <br/>
-            <pre>
-                {JSON.stringify({count, incBy})}
-            </pre>
-            <br/>
+            <button onClick={resetState}>Reset state!</button>
 
-            <p>
-                Go to: <a href="/hello_elm">Hello Elm from React!</a>
-                Or press this button: <button onClick={resetState} className={actionBtnClass}>Reset state!</button>
-            </p>
-
+            <h3>COUNT={count}</h3>
         </>
     )
 }
